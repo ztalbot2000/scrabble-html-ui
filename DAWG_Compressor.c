@@ -12,7 +12,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#define MAX 15
+#define MAX 28
 #define MIN 2
 #define NUMBER_OF_REDUCED_LETTERS 14
 #define INPUT_LIMIT 30
@@ -370,6 +370,7 @@ BreadthQueuePtr BreadthQueueInit( void ) {
 	Result->Front = NULL;
 	Result->Back = NULL;
 	Result->Size = 0;
+	return Result;
 }
 
 void BreadthQueuePush(BreadthQueuePtr ThisBreadthQueue, TnodePtr NewElemental){
@@ -617,8 +618,8 @@ unsigned int *DawgInit(char **Dictionary, int *SegmentLenghts, int MaxStringLeng
 	printf("\nStep 11.1 - Mowing of the lawn is now complete, so start to assign array indices to all living nodes.\n");
 	printf("Step 11.2 - The use of a breadth first queue during this step ensures that lists of contiguous nodes in the array will eliminate the need for a Next pointer.\n\n");
 	OrderMatters = BreadthQueueInit();
-	// Try to find out if the nodes we are setting are unique before we set them.
-	IndexCount = BreadthQueueUseToIndex( OrderMatters, HolderOfAllTnodePointers[MAX - 1][0] );
+	// Index the unique nodes for the DAWG to be created.
+        IndexCount = BreadthQueueUseToIndex( OrderMatters, TNODE_CHILD(TemporaryTrie->First) );
 	printf("Finished indexing.\n");
 	printf("NumberOfLivingNodes from after the dangling process|%d|\n", NumberOfLivingNodes);
 	printf("IndexCount from the index-handing-out breadth first traversal |%d|\n", IndexCount);
