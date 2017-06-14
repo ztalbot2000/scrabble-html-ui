@@ -188,18 +188,18 @@
 	{
 		var text = $("#text_field").val();
 		var anagrams = game.Dictionary.FindAnagrams(text);
-		if (anagrams.length == 1)
+		if (anagrams.length <= 0)
 		{
-			alert("Error: the characters [" + anagrams[0] + "] do not return any anagrams from the \"" + game.Language + "\" dictionary.");
+			alert("Error: the characters [" + text + "] do not return any anagrams from the \"" + game.Language + "\" dictionary.");
 		}
 		else
 		{
-			//alert("Success: the characters [" + anagrams[0] + "] return " + (anagrams.length-1) + " anagrams from the \"" + game.Language + "\" dictionary.");
+			//alert("Success: the characters [" + text + "] return " + (anagrams.length) + " anagrams from the \"" + game.Language + "\" dictionary.");
 			
 			$('#anagrams').html('<p><input type="button" value="Clear Anagrams" onclick="$(\'#anagrams\').html(\'\');"></input></p>');
 			
 			/*
-			for (var i = 1; i < anagrams.length; i++)
+			for (var i = 0; i < anagrams.length; i++)
 			{
 				$('#anagrams').append('<p>' + anagrams[i] + '</p>');
 			}
@@ -211,7 +211,7 @@
 				wordsByLength.push([]);
 			}
 			
-			for (var i = 1; i < anagrams.length; i++)
+			for (var i = 0; i < anagrams.length; i++)
 			{
 				var word = anagrams[i];
 				wordsByLength[word.length].push(word);
