@@ -553,7 +553,7 @@ _Dictionary.prototype.FindAnagrams = function(theChars)
 		return [string];
 	}
 	
-	var anagrams = [string]; 
+	var anagrams = []; 
 
 	var charBank = [];
 	for (var i = 0; i < sortedChars.length; i++)
